@@ -29,15 +29,16 @@ int main(void)
 	while(1){
 
 
+	uint8_t temp=	usart_getchar();
+	delay_ms(1000);
+	GPIOC->ODR &=~ GPIO_ODR_ODR13;
 
-			GPIOC->ODR &=~ GPIO_ODR_ODR13;
+	usart_sendchar(temp);
+	delay_ms(1000);
+	GPIOC->ODR |= GPIO_ODR_ODR13;
 
-			usart_sendchar('a');
-			delay_ms(1000);
-			GPIOC->ODR |= GPIO_ODR_ODR13;
-
-			usart_sendstring("\nle hoang tan");
-			delay_ms(1000);
+	usart_sendchar(temp);
+	delay_ms(1000);
 
 
 
